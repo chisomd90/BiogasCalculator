@@ -29,6 +29,6 @@ def calculate_biogas(request):
                 biogas_production=biogas_production
             )
 
-        return render(request, 'templates/result.html', {'biogas_production': biogas_production})
+        return render(request, 'BiogasCalculator/result.html', {'biogas_production': biogas_production})
 
-    return render(request, 'templates/calculate.html')
+    return render(request, 'BiogasCalculator/calculate.html')
