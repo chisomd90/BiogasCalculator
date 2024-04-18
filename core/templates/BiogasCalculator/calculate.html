@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,11 +12,11 @@
       rel="stylesheet"
     />
     <title>Biogas Calculator</title>
-    <link rel="stylesheet" href="./asset/calculate.css" />
+    <link rel="stylesheet" href="{% static './asset/calculate.css' %}" />
   </head>
   <body>
     <header>
-      <img src="./asset/unesco.svg" alt="" />
+      <img src="{% static './asset/unesco.svg' %}" alt="" />
       <h2>Biogas Calculator</h2>
     </header>
 
@@ -45,5 +47,5 @@
     <div id="demo">Demo</div>
   </body>
 
-  <script src="./asset/calculate.js"></script>
+  <script src="{% static './asset/calculate.js' %}"></script>
 </html>
