@@ -21,20 +21,27 @@
     </header>
 
     <div class="main">
-      <form id="form">
-        <label for="input1">
-          <p>Input 1</p>
-          <input type="number" id="input1" placeholder="Input 1" />
+      <form id="form" action="{% url 'calculate_biogas' %}" method="POST">
+        {% csrf_token %}
+
+        <label for="fvw">
+          <p>Ratio FVW</p>
+          <input type="number" id="fvw" placeholder="fvw" />
         </label>
 
-        <label for="input1">
-          <p>Input 1</p>
-          <input type="number" id="input1" placeholder="Input 1" />
+        <label for="cm">
+          <p>Ratio of cow manure</p>
+          <input type="number" id="cm" placeholder="cm" />
         </label>
 
-        <label for="input1">
-          <p>Input 1</p>
-          <input type="number" id="input1" placeholder="Input 1" />
+        <label for="mc">
+          <p>Moisture content</p>
+          <input type="number" id="mc" placeholder="mc" />
+        </label>
+
+        <label for="vsc">
+          <p>VS Content</p>
+          <input type="number" id="vsc" placeholder="vsc" />
         </label>
 
         <input type="submit" value="Submit" />
@@ -47,5 +54,5 @@
     <div id="demo">Demo</div>
   </body>
 
-  <script src="{% static './asset/calculate.js' %}"></script>
+  <script src="{% static './asset/calculate.js' %}" type="module"></script>
 </html>
