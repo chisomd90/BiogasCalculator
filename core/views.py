@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from .models import WasteCharacteristics, BiogasProduction
 
 def calculate_biogas(request):
@@ -29,6 +30,9 @@ def calculate_biogas(request):
                 biogas_production=biogas_production
             )
 
-        return render(request, 'BiogasCalculator/result.html', {'biogas_production': biogas_production})
+        response_message = f"The biogas production is {biogas_production:.2f} cubic meters."
+        
+        # Returns result in JSON format
+        return JsonResponse({'biogas_production': biogas_production, 'response_message': response_message})
 
     return render(request, 'BiogasCalculator/calculate.html')
