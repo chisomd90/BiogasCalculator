@@ -34,7 +34,7 @@ def calculate_biogas(request):
             # Construct JSON response
             response_data = {
                 'biogas_production': biogas_production,
-                'response_message': f"The biogas production is {biogas_production:.2f} cubic meters."
+                'response_message': f"The biogas production is {biogas_production:.5f} cubic meters."
             }
             return JsonResponse(response_data)
 

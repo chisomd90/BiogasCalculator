@@ -31,12 +31,13 @@ const handleSubmit = async (e) => {
       },
     });
 
-    console.log(response);
+    const jsonResponse = await response.json();
 
-    setTimeout(() => {
-      loading.style.display = "none";
-      result.style.display = "block";
-    }, 2000);
+    result.innerHTML = jsonResponse.response_message;
+
+    loading.style.display = "none";
+    result.style.display = "block";
+
   } catch (err) {
     console.log(err);
   }
