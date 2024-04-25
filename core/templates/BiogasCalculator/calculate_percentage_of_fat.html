@@ -28,34 +28,44 @@
       >
         {% csrf_token %}
 
-        <label for="fvw">
-          <p>Ratio FVW</p>
-          <input type="number" id="fvw" name="ratio_fvw" placeholder="fvw" />
-        </label>
-
-        <label for="cm">
-          <p>Ratio of cow manure</p>
+        <label for="weight_of_flask">
+          <p>Weight of Flask</p>
           <input
             type="number"
-            id="cm"
-            name="ratio_cow_manure"
-            placeholder="cm"
+            id="weight_of_flask"
+            name="weight_of_flask"
+            placeholder="weight of flask"
           />
         </label>
 
-        <label for="mc">
-          <p>Moisture content</p>
+        <label for="weight_of_oil">
+          <p>Weight of Oil</p>
           <input
             type="number"
-            id="mc"
-            name="moisture_content"
-            placeholder="mc"
+            id="weight_of_oil"
+            name="weight_of_oil"
+            placeholder="weight of oil"
           />
         </label>
 
-        <label for="vsc">
-          <p>VS Content</p>
-          <input type="number" id="vsc" name="vs_content" placeholder="vsc" />
+        <label for="weight_of_empty_flask">
+          <p>Weight of Empty Flask</p>
+          <input
+            type="number"
+            id="weight_of_empty_flask"
+            name="weight_of_empty_flask"
+            placeholder="weight of empty flask"
+          />
+        </label>
+
+        <label for="weight_of_sample">
+          <p>Weight of Sample</p>
+          <input
+            type="number"
+            id="weight_of_sample"
+            name="weight_of_sample"
+            placeholder="weight of sample"
+          />
         </label>
 
         <input type="submit" value="Submit" name="submit_button" />
