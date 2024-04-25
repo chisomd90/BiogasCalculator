@@ -15,7 +15,7 @@ const handleSubmit = async (e) => {
     result.style.display = "none";
     loading.style.display = "block";
 
-    console.log({ fvw, cm, mc, vsc });
+    console.log({ fvw, cm, mc, vsc, csrfToken });
 
     const response = await fetch(
       "http://127.0.0.1:8000/calculate_percentage_of_fat/",
