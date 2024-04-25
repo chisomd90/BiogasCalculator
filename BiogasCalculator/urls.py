@@ -17,10 +17,27 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import path
-from core.views import calculate_biogas
+from django.urls import path, include
+from core.views import (
+    calculate_percentage_of_fat,
+    calculate_percentage_of_ash,
+    calculate_percentage_of_fibre,
+    calculate_percentage_of_moisture,
+    calculate_percentage_of_protein,
+    calculate_percentage_of_carbohydrate,
+    calculate_determination_of_total_solids,
+    calculate_determination_of_volatile_solids,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('calculate-biogas/', calculate_biogas, name='calculate_biogas'),
+    path('calculate_percentage_of_fat/', calculate_percentage_of_fat, name='calculate_percentage_of_fat'),
+    path('calculate_percentage_of_ash/', calculate_percentage_of_ash, name='calculate_percentage_of_ash'),
+    path('calculate_percentage_of_fibre/', calculate_percentage_of_fibre, name='calculate_percentage_of_fibre'),
+    path('calculate_percentage_of_moisture/', calculate_percentage_of_moisture, name='calculate_percentage_of_moisture'),
+    path('calculate_percentage_of_protein/', calculate_percentage_of_protein, name='calculate_percentage_of_protein'),
+    path('calculate_percentage_of_carbohydrate/', calculate_percentage_of_carbohydrate, name='calculate_percentage_of_carbohydrate'),
+    path('calculate_determination_of_total_solids/', calculate_determination_of_total_solids, name='calculate_determination_of_total_solids'),
+    path('calculate_determination_of_volatile_solids/', calculate_determination_of_volatile_solids, name='calculate_determination_of_volatile_solids'),
+    
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
