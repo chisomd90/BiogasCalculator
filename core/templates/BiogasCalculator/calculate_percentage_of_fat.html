@@ -2,77 +2,57 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-      rel="stylesheet"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biogas Calculator</title>
     <link rel="stylesheet" href="{% static 'asset/calculate.css' %}" />
-  </head>
-  <body>
+</head>
+<body>
     <header>
-      <img src="{% static 'asset/unesco.svg' %}" alt="" />
-      <h2>Biogas Calculator</h2>
+        <img src="{% static 'asset/unesco.svg' %}" alt="" />
+        <h2>Biogas Calculator</h2>
     </header>
 
     <div class="main">
-      <form
-        id="form"
-        action="{% url 'calculate_percentage_of_fat' %}"
-        method="POST"
-      >
-        {% csrf_token %}
+        <form id="form" action="{% url 'calculate_percentage_of_fat' %}" method="POST">
+            {% csrf_token %}
 
-        <label for="fvw">
-          <p>Ratio FVW</p>
-          <input type="number" id="fvw" name="ratio_fvw" placeholder="fvw" />
-        </label>
+            <label for="weight_of_flask">
+                <p>Weight of Flask (g)</p>
+                <input type="number" id="weight_of_flask" name="weight_of_flask" placeholder="Weight of Flask" />
+            </label>
 
-        <label for="cm">
-          <p>Ratio of cow manure</p>
-          <input
-            type="number"
-            id="cm"
-            name="ratio_cow_manure"
-            placeholder="cm"
-          />
-        </label>
+            <label for="weight_of_oil">
+                <p>Weight of Oil (g)</p>
+                <input type="number" id="weight_of_oil" name="weight_of_oil" placeholder="Weight of Oil" />
+            </label>
 
-        <label for="mc">
-          <p>Moisture content</p>
-          <input
-            type="number"
-            id="mc"
-            name="moisture_content"
-            placeholder="mc"
-          />
-        </label>
+            <label for="weight_of_empty_flask">
+                <p>Weight of Empty Flask (g)</p>
+                <input type="number" id="weight_of_empty_flask" name="weight_of_empty_flask" placeholder="Weight of Empty Flask" />
+            </label>
 
-        <label for="vsc">
-          <p>VS Content</p>
-          <input type="number" id="vsc" name="vs_content" placeholder="vsc" />
-        </label>
+            <label for="weight_of_sample">
+                <p>Weight of Sample (g)</p>
+                <input type="number" id="weight_of_sample" name="weight_of_sample" placeholder="Weight of Sample" />
+            </label>
 
-        <input type="submit" value="Submit" name="submit_button" />
-      </form>
+            <input type="submit" value="Calculate Percentage of Fat" name="submit_button" />
+        </form>
 
-      <div id="loading">Calculating...</div>
-      <div id="result">
-        <!-- Placeholder for result and response message -->
-        <!-- {% if result %}
-        <p>Biogas Production: {{ result.biogas_production }}</p>
-        <p>Response Message: {{ result.response_message }}</p>
-        {% endif %} -->
-      </div>
+        <div id="loading">Calculating...</div>
+        <div id="result">
+            <!-- Placeholder for result and response message -->
+            <!-- {% if result %}
+            <p>Biogas Production: {{ result.biogas_production }}</p>
+            <p>Response Message: {{ result.response_message }}</p>
+            {% endif %} -->
+        </div>
     </div>
 
     <div id="demo">Demo</div>
-  </body>
 
-  <script src="{% static 'asset/calculate.js' %}" type="module"></script>
+    <script src="{% static 'asset/calculate.js' %}" type="module"></script>
+</body>
 </html>
