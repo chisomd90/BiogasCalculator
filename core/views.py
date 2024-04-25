@@ -12,6 +12,10 @@ def calculate_percentage_of_fat(request):
         weight_of_sample = request.POST.get('weight_of_sample')
         
         try:
+            # Check if any form data is None
+            if None in (weight_of_flask, weight_of_oil, weight_of_empty_flask, weight_of_sample):
+                raise ValueError("Form data cannot be None")
+
             # Convert form inputs to integers
             weight_of_flask = int(weight_of_flask)
             weight_of_oil = int(weight_of_oil)
@@ -49,6 +53,10 @@ def calculate_percentage_of_ash(request):
         weight_of_sample = request.POST.get('weight_of_sample')
         
         try:
+            # Check if any form data is None
+            if None in (weight_of_crucible, weight_of_ash, weight_of_sample):
+                raise ValueError("Form data cannot be None")
+            
             # Convert form inputs to integers
             weight_of_crucible = int(weight_of_crucible)
             weight_of_ash = int(weight_of_ash)
@@ -86,6 +94,11 @@ def calculate_percentage_of_fibre(request):
         weight_of_sample = request.POST.get('weight_of_sample')
         
         try:
+            # Check if any form data is None
+            if None in (weight_of_dryresidue, weight_of_ash, weight_of_sample):
+                raise ValueError("Form data cannot be None")
+
+
             # Convert form inputs to integers
             weight_of_dryresidue = int(weight_of_dryresidue)
             weight_of_ash = int(weight_of_ash)
@@ -122,6 +135,11 @@ def calculate_percentage_of_moisture(request):
         weight_of_drymatter = request.POST.get('weight_of_drymatter')
         
         try:
+            # Check if any form data is None
+            if None in (weight_of_crucible, weight_of_drymatter, weight_of_sample):
+                raise ValueError("Form data cannot be None")
+            
+
             # Convert form inputs to integers
             weight_of_crucible = int(weight_of_crucible)
             weight_of_sample = int(weight_of_sample)
@@ -156,6 +174,9 @@ def calculate_percentage_of_protein(request):
         percentage_of_nitrogen = request.POST.get('percentage_of_nitrogen')
         
         try:
+            # Check if any form data is None
+            if None in (percentage_of_nitrogen):
+                raise ValueError("Form data cannot be None")
             # Convert form input to integer
             percentage_of_nitrogen = int(percentage_of_nitrogen)
             
@@ -192,6 +213,10 @@ def calculate_percentage_of_carbohydrate(request):
         percentage_of_fibre = request.POST.get('percentage_of_fibre')
         
         try:
+            # Check if any form data is None
+            if None in (percentage_of_ash, percentage_of_fat, percentage_of_fibre, percentage_of_moisture, percentage_of_protein):
+                raise ValueError("Form data cannot be None")
+            
             # Convert form inputs to integers
             percentage_of_ash = int(percentage_of_ash)
             percentage_of_protein = int(percentage_of_protein)
@@ -231,6 +256,10 @@ def calculate_determination_of_total_solids(request):
         weight_of_dryresidue = request.POST.get('weight_of_dryresidue')
         
         try:
+            # Check if any form data is None
+            if None in (weight_of_crucible, weight_of_dryresidue, weight_of_sample):
+                raise ValueError("Form data cannot be None")
+            
             # Convert form inputs to integers
             weight_of_crucible = int(weight_of_crucible)
             weight_of_sample = int(weight_of_sample)
@@ -267,6 +296,10 @@ def calculate_determination_of_volatile_solids(request):
         weight_of_sample = request.POST.get('weight_of_sample')
         
         try:
+            # Check if any form data is None
+            if None in (weight_of_dryresidue, weight_of_dryresidue_from_furnace, weight_of_sample):
+                raise ValueError("Form data cannot be None")
+            
             # Convert form inputs to integers
             weight_of_dryresidue = int(weight_of_dryresidue)
             weight_of_dryresidue_from_furnace = int(weight_of_dryresidue_from_furnace)
