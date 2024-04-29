@@ -195,3 +195,5 @@ Calculates the percentage of fibre based on the provided input parameters.
     "percentage_of_fibre": 25.0
 }
 ```
+
+## This documentation provides detailed information on each endpoint, including the request format, response format, and example requests and responses. You can use this documentation to understand how to interact with the API endpoints effectively.
