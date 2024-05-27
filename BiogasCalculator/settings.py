@@ -81,11 +81,14 @@ WSGI_APPLICATION = 'BiogasCalculator.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'biogasdb',
+        'USER': 'root',
+        'PASSWORD': 'password',
+        'HOST':'127.0.0.1',
+        'PORT':'3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

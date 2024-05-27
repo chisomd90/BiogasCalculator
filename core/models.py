@@ -24,8 +24,7 @@ class PercentageOfAsh(models.Model):
 
 class PercentageOfProtein(models.Model):
     CONVERSION_FACTOR = 6.25  # Constant value for conversion factor
-
-    Percentage_of_nitrogen = models.IntegerField()
+    percentage_of_nitrogen = models.IntegerField()
 
 class PercentageOfCarbohydrate(models.Model):
     Percentage_of_ash = models.IntegerField()

@@ -21,6 +21,7 @@ from django.urls import path, include
 from core.views import *
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('calculate_percentage_of_fat/', CalculatePercentageOfFat.as_view()),
     path('calculate_percentage_of_ash/', CalculatePercentageOfAsh.as_view()),
     path('calculate_percentage_of_protein/', CalculatePercentageOfProtein.as_view()),
@@ -28,4 +29,5 @@ urlpatterns = [
     path('calculate_determination_of_total_solids/', CalculateDeterminationOfTotalSolids.as_view()),
     path('calculate_determination_of_volatile_solids/', CalculateDeterminationOfVolatileSolids.as_view()),
     path('calculate_percentage_of_fibre/', CalculatePercentageOfFibre.as_view()),
+    path('reset_fields/', ResetFields.as_view()),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

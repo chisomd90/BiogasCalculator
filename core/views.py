@@ -1,7 +1,10 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import PercentageOfProtein
-
+from .models import (
+    PercentageOfFat, PercentageOfAsh, PercentageOfProtein, 
+    PercentageOfMoisture, DeterminationOfTotalSolids, 
+    DeterminationOfVolatileSolids, PercentageOfFibre
+)
 class CalculatePercentageOfFat(APIView):
     def post(self, request):
         # Parse request data
@@ -23,6 +26,14 @@ class CalculatePercentageOfFat(APIView):
 
             # Perform calculation
             result = (((weight_of_flask + weight_of_oil) - weight_of_empty_flask) / weight_of_sample) * 100.0
+
+            # Save to database
+            PercentageOfFat.objects.create(
+                weight_of_flask=weight_of_flask,
+                weight_of_oil=weight_of_oil,
+                weight_of_empty_flask=weight_of_empty_flask,
+                weight_of_sample=weight_of_sample
+            )
 
             # Return response
             return Response({'percentage_of_fat': result}, status=200)
@@ -50,6 +61,13 @@ class CalculatePercentageOfAsh(APIView):
             # Perform calculation
             result = (((weight_of_crucible + weight_of_ash) - weight_of_crucible) / weight_of_sample) * 100.0
 
+            # Save to database
+            PercentageOfAsh.objects.create(
+                weight_of_crucible=weight_of_crucible,
+                weight_of_ash=weight_of_ash,
+                weight_of_sample=weight_of_sample
+            )
+
             # Return response
             return Response({'percentage_of_ash': result}, status=200)
         except ValueError:
@@ -71,6 +89,11 @@ class CalculatePercentageOfProtein(APIView):
             # Perform calculation
             result = percentage_of_nitrogen * PercentageOfProtein.CONVERSION_FACTOR
 
+               # Create a new PercentageOfProtein instance and save it
+            protein_instance = PercentageOfProtein(percentage_of_nitrogen=percentage_of_nitrogen)
+            protein_instance.save()
+
+        
             # Return response
             return Response({'percentage_of_protein': result}, status=200)
         except ValueError:
@@ -95,6 +118,13 @@ class CalculatePercentageOfMoisture(APIView):
 
             # Perform calculation
             result = (((weight_of_crucible + weight_of_sample) - (weight_of_crucible + weight_of_drymatter)) / weight_of_sample) * 100.0
+
+            # Save to database
+            PercentageOfMoisture.objects.create(
+                weight_of_crucible=weight_of_crucible,
+                weight_of_sample=weight_of_sample,
+                weight_of_drymatter=weight_of_drymatter
+            )
 
             # Return response
             return Response({'percentage_of_moisture': result}, status=200)
@@ -121,6 +151,13 @@ class CalculateDeterminationOfTotalSolids(APIView):
             # Perform calculation
             result = (((weight_of_crucible * weight_of_dryresidue) - weight_of_crucible) / weight_of_sample) * 100.0
 
+             # Save to database
+            DeterminationOfTotalSolids.objects.create(
+                weight_of_crucible=weight_of_crucible,
+                weight_of_sample=weight_of_sample,
+                weight_of_dryresidue=weight_of_dryresidue
+            )
+
             # Return response
             return Response({'determination_of_total_solids': result}, status=200)
         except ValueError:
@@ -145,6 +182,13 @@ class CalculateDeterminationOfVolatileSolids(APIView):
 
             # Perform calculation
             result = ((weight_of_dryresidue - weight_of_dryresidue_from_furnace) / weight_of_sample) * 100.0
+
+            # Save to database
+            DeterminationOfVolatileSolids.objects.create(
+                weight_of_dryresidue=weight_of_dryresidue,
+                weight_of_dryresidue_from_furnace=weight_of_dryresidue_from_furnace,
+                weight_of_sample=weight_of_sample
+            )
 
             # Return response
             return Response({'determination_of_volatile_solids': result}, status=200)
@@ -171,7 +215,19 @@ class CalculatePercentageOfFibre(APIView):
             # Perform calculation
             result = ((weight_of_dryresidue - weight_of_ash) / weight_of_sample) * 100.0
 
+            # Save to database
+            PercentageOfFibre.objects.create(
+                weight_of_dryresidue=weight_of_dryresidue,
+                weight_of_ash=weight_of_ash,
+                weight_of_sample=weight_of_sample
+            )
+
             # Return response
             return Response({'percentage_of_fibre': result}, status=200)
         except ValueError:
             return Response({'error': 'Invalid input data'}, status=400)
+
+class ResetFields(APIView):
+    def post(self, request):
+        # This endpoint can be used to signal the client to reset fields
+        return Response({'message': 'Fields reset successfully'}, status=200)
